@@ -1,54 +1,94 @@
-
+let myScore = 0;
+let compScore = 0;
+let totalGames = 0;
 
 var rockPaperScissors = ['rock', 'paper', 'scissors']
-
-function playerSelection(){
-    if (playerPlay == 'rock'){
-        console.log(playerPlay=1);
-    } else if (playerPlay == 'paper'){
-        console.log(playerPlay=2);
-    } else if (playerPlay == 'scissors'){
-        console.log(playerPlay=3);
-    }
-}
 
 function computerPlay(){
   return rockPaperScissors = rockPaperScissors[Math.floor(Math.random()*rockPaperScissors.length)];
   console.log(computerPlay);
 
-  if (computerPlay === 'rock'){
+  if (computerPlay == 'rock'){
       return 1;
-  } else if (computerPlay === 'paper'){
+  } else if (computerPlay == 'paper'){
       return 2;
-  } else if (computerPlay === 'scissors'){
+  } else if (computerPlay == 'scissors'){
       return 3;
   }
 }
-console.log(computerPlay())
 
-function playRound(computerSelection, playerSelection){
-    if(computerSelection === 1 && playerSelection === 2){
-        return 'You win! Paper beats rock.'
-    } else if (computerSelection === 3 && playerSelection === 1){
-        return 'You win! Rock beats scissors.'
-    } else if (computerSelection === 2 && playerSelection === 3){
-        return 'You win! Paper beats scissors.'
-    } else if (computerSelection === 1 && playerSelection === 3){
-        return 'You lose! Rock beats scissors.'
-    } else if (computerSelection === 3 && playerSelection === 2){
-        return 'You lose! Scissors beats paper.'
-    } else if (computerSelection === 2 && playerSelection === 1){
+function playRound(playerSelection, computerSelection){
+    if(playerSelection === 1 && computerSelection === 2){
         return 'You lose! Paper beats rock.'
-    } else if (computerSelection == playerSelection){
+    } else if (playerSelection == 3 && computerSelection == 1){
+        return 'You lose! Rock beats scissors.'
+    } else if (playerSelection == 2 && computerSelection == 3){
+        return 'You lose! Paper beats scissors.'
+    } else if (playerSelection == 1 && computerSelection == 3){
+        return 'You win! Rock beats scissors.'
+    } else if (playerSelection == 3 && computerSelection == 2){
+        return 'You win! Scissors beats paper.'
+    } else if (playerSelection == 2 && computerSelection == 1){
+        return 'You win! Paper beats rock.'
+    } else if (playerSelection == computerSelection){
         return 'Tie game! Try again.'
     }
 }
 
-const computerSelection = computerPlay();
-console.log(playRound());
 
-function game(){
-    function playRound(playerSelection, computerSelection){
+
+function gameScore(points){
+    document.getElementById("round").innerHTML = points;
+    switch(true){
+        case (points.search('Win') != -1):{
+            myScore++;
+            break;
+        }
+        case(points.search('Lose') != -1):{
+            compScore++;
+            break;
+        }
+        case(points.search('Tie') != -1):{
+            break;
+        }
         
     }
 }
+
+    if ( myScore === 5 || compScore ===  5) {
+        if (myScore > compScore){
+        document.getElementById("scores").innerHTML = 'You win the match ' + myScore + '-' + compScore;
+        myScore = 0;
+        compScore = 0;
+        }
+        else if (myScore < compScore){
+        document.getElementById("scores").innerHTML = 'You lose the match ' + myScore + '-' + compScore;
+        myScore = 0;
+        compScore = 0;
+        }
+        else {
+        document.getElementById("scores").innerHTML = myScore + " - " + compScore;
+
+    }
+}
+
+document.getElementById("rock").addEventListener('click', function(e){
+    let playerSelection = 1;
+    let computerSelection = computerPlay();
+    let points = playRound(playerSelection, computerSelection);
+    gameScore(points);
+});
+
+document.getElementById("paper").addEventListener('click', function(e){
+    let playerSelection = 2;
+    let computerSelection = computerPlay();
+    let points = playRound(playerSelection, computerSelection);
+    gameScore(points);
+});
+
+document.getElementById("scissors").addEventListener('click', function(e){
+    let playerSelection = 3;
+    let computerSelection = computerPlay();
+    let points = playRound(playerSelection, computerSelection);
+    gameScore(points);
+});

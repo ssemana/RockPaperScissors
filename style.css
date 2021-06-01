@@ -35,3 +35,12 @@ body{
     border-color:  lightgray;
     box-shadow:  0 0 1rem lightgray;
 }
+
+.scores {
+    font-size:  2.5em;
+    color: black;
+    display:  flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
