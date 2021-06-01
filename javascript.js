@@ -2,23 +2,21 @@ let myScore = 0;
 let compScore = 0;
 let totalGames = 0;
 
-var rockPaperScissors = ['rock', 'paper', 'scissors']
 
 function computerPlay(){
-  return rockPaperScissors = rockPaperScissors[Math.floor(Math.random()*rockPaperScissors.length)];
-  console.log(computerPlay);
+  let random = Math.floor( Math.random() * Math.floor(3));
 
-  if (computerPlay == 'rock'){
+  if (random == 1)
       return 1;
-  } else if (computerPlay == 'paper'){
+   else if (random == 2)
       return 2;
-  } else if (computerPlay == 'scissors'){
+  else 
       return 3;
-  }
+
 }
 
 function playRound(playerSelection, computerSelection){
-    if(playerSelection === 1 && computerSelection === 2){
+    if(playerSelection == 1 && computerSelection ==2){
         return 'You lose! Paper beats rock.'
     } else if (playerSelection == 3 && computerSelection == 1){
         return 'You lose! Rock beats scissors.'
@@ -36,7 +34,6 @@ function playRound(playerSelection, computerSelection){
 }
 
 
-
 function gameScore(points){
     document.getElementById("round").innerHTML = points;
     switch(true){
@@ -44,11 +41,11 @@ function gameScore(points){
             myScore++;
             break;
         }
-        case(points.search('Lose') != -1):{
+        case (points.search('Lose') != -1):{
             compScore++;
             break;
         }
-        case(points.search('Tie') != -1):{
+        case (points.search('Tie') != -1):{
             break;
         }
         
@@ -83,6 +80,7 @@ document.getElementById("paper").addEventListener('click', function(e){
     let playerSelection = 2;
     let computerSelection = computerPlay();
     let points = playRound(playerSelection, computerSelection);
+    
     gameScore(points);
 });
 
