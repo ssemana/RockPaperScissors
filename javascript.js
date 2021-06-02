@@ -1,6 +1,6 @@
 let myScore = 0;
 let compScore = 0;
-let totalGames = 0;
+
 
 
 function computerPlay(){
@@ -50,22 +50,21 @@ function gameScore(points){
         }
         
     }
-}
-
-    if ( myScore === 5 || compScore ===  5) {
+    
+    if ( myScore === 5 || compScore === 5 ) {
         if (myScore > compScore){
-        document.getElementById("scores").innerHTML = 'You win the match ' + myScore + '-' + compScore;
-        myScore = 0;
-        compScore = 0;
+            document.getElementById("scores").innerHTML = 'You win the match ' + myScore + '-' + compScore;
+            myScore = 0;
+            compScore = 0;
         }
         else if (myScore < compScore){
-        document.getElementById("scores").innerHTML = 'You lose the match ' + myScore + '-' + compScore;
-        myScore = 0;
-        compScore = 0;
+            document.getElementById("scores").innerHTML = 'You lose the match ' + myScore + '-' + compScore;
+            myScore = 0;
+            compScore = 0;
         }
-        else {
+    }
+    else{
         document.getElementById("scores").innerHTML = myScore + " - " + compScore;
-
     }
 }
 
@@ -80,7 +79,6 @@ document.getElementById("paper").addEventListener('click', function(e){
     let playerSelection = 2;
     let computerSelection = computerPlay();
     let points = playRound(playerSelection, computerSelection);
-    
     gameScore(points);
 });
 
