@@ -17,17 +17,17 @@ function computerPlay(){
 
 function playRound(playerSelection, computerSelection){
     if(playerSelection == 1 && computerSelection ==2){
-        return 'You lose! Paper beats rock.'
+        return 'You Lose! Paper beats rock.'
     } else if (playerSelection == 3 && computerSelection == 1){
-        return 'You lose! Rock beats scissors.'
+        return 'You Lose! Rock beats scissors.'
     } else if (playerSelection == 2 && computerSelection == 3){
-        return 'You lose! Paper beats scissors.'
+        return 'You Lose! Paper beats scissors.'
     } else if (playerSelection == 1 && computerSelection == 3){
-        return 'You win! Rock beats scissors.'
+        return 'You Win! Rock beats scissors.'
     } else if (playerSelection == 3 && computerSelection == 2){
-        return 'You win! Scissors beats paper.'
+        return 'You Win! Scissors beats paper.'
     } else if (playerSelection == 2 && computerSelection == 1){
-        return 'You win! Paper beats rock.'
+        return 'You Win! Paper beats rock.'
     } else if (playerSelection == computerSelection){
         return 'Tie game! Try again.'
     }
